@@ -32,16 +32,16 @@ ContratRepository CR;
 public void ajouterEmploye()
 {
 Employe emp=new Employe("test", "test", "test", true, Role.ADMINISTRATEUR);
-//int a=ES.ajouterEmploye(emp);
-//assertEquals(emp.getId(), a);
+int a=ES.ajouterEmploye(emp);
+assertEquals(emp.getId(), a);
 }
 	
 @Test
 public void ajouterContrat()
 {
 Contrat C=new Contrat(new Date(), "Contrat annuel", 350);
-//int a=ES.ajouterContrat(C);
-//assertEquals(C.getReference(), a);
+int a=ES.ajouterContrat(C);
+assertEquals(C.getReference(), a);
 }
 
 
