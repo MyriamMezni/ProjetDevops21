@@ -61,7 +61,7 @@ public void mettreAjourEmailByEmployeId()
 @Test
 public void affecterContratAEmploye()
 {
-	int contratId=2;
+	int contratId=17;
 	int employeId=2;
 	Contrat C=CR.findById(contratId).get();
 	Employe emp=ER.findById(employeId).get();
@@ -97,4 +97,14 @@ public void getNombreEmployeJPQL()
 	assertEquals(ES.getNombreEmployeJPQL(),ES.getAllEmployes().size());
 
 }
+
+
+@Test
+public void deleteAllContratJPQL()
+{
+	//ES.deleteAllContratJPQL();
+	//assertEquals(0,CR.count());
+
+}
+
 }
