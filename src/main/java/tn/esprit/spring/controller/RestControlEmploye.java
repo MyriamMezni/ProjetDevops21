@@ -3,6 +3,8 @@ package tn.esprit.spring.controller;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +31,7 @@ import tn.esprit.spring.services.ITimesheetService;
 @RestController
 public class RestControlEmploye {
 
+	Logger logger=LogManager.getLogger();
 	
 	@Autowired
 	IEmployeService iemployeservice;
@@ -46,7 +49,17 @@ public class RestControlEmploye {
 	public Employe ajouterEmploye(@RequestBody Employe employe)
 	{
 		iemployeservice.ajouterEmploye(employe);
+		try {
+			logger.info("in ajouter Employe");
+			logger.debug("Je vais commencer l'ajout");
+			iemployeservice.ajouterEmploye(employe);
+			logger.info("out ajouter Employe");
+			return employe;
+			}
+			catch (Exception e) { logger.error("Erreur dans ajouterEmploye() : " + e); }
+		
 		return employe;
+		
 	}
 	
 	// Modifier email : http://localhost:8081/SpringMVC/servlet/modifyEmail/1/newemail
@@ -55,11 +68,30 @@ public class RestControlEmploye {
 	public void mettreAjourEmailByEmployeId(@PathVariable("newemail") String email, @PathVariable("id") int employeId) {
 		iemployeservice.mettreAjourEmailByEmployeId(email, employeId);
 		
+		
+		try {
+			logger.info("in  mettreAjourEmailByEmployeId");
+			logger.debug("Je vais commencer la mise à jour");
+			iemployeservice.mettreAjourEmailByEmployeId(email, employeId);
+			logger.info("out Mise à jour ");
+			}
+			catch (Exception e) { logger.error("Erreur dans mettreAjourEmailByEmployeId() : " + e); }
+		
+		
+		
 	}
 	// http://localhost:8081/SpringMVC/servlet/affecterEmployeADepartement/1/1
 	@PutMapping(value = "/affecterEmployeADepartement/{idemp}/{iddept}") 
 	public void affecterEmployeADepartement(@PathVariable("idemp")int employeId, @PathVariable("iddept")int depId) {
 		iemployeservice.affecterEmployeADepartement(employeId, depId);
+		try {
+			logger.info("in  affecterEmployeADepartement");
+			logger.debug("Je vais commencer l'affectation");
+			iemployeservice.affecterEmployeADepartement(employeId, depId);
+			logger.info("out affecterEmployeADepartement ");
+			}
+			catch (Exception e) { logger.error("Erreur dans affecterEmployeADepartement() : " + e); }
+		
 		
 	}
 	
@@ -68,6 +100,16 @@ public class RestControlEmploye {
 	public void desaffecterEmployeDuDepartement(@PathVariable("idemp")int employeId, @PathVariable("iddept")int depId)
 	{
 		iemployeservice.desaffecterEmployeDuDepartement(employeId, depId);
+
+		try {
+			logger.info("in  desaffecterEmployeDuDepartement");
+			logger.debug("Je vais commencer la desaffectation");
+			iemployeservice.desaffecterEmployeDuDepartement(employeId, depId);
+			logger.info("out de desaffecterEmployeDuDepartement ");
+			}
+			catch (Exception e) { logger.error("Erreur dans desaffecterEmployeDuDepartement() : " + e); }
+		
+		
 	}
 
 	// http://localhost:8081/SpringMVC/servlet/ajouterContrat
@@ -76,7 +118,26 @@ public class RestControlEmploye {
 	@ResponseBody
 	public int ajouterContrat(@RequestBody Contrat contrat) {
 		iemployeservice.ajouterContrat(contrat);
+		
+		
+		
+		
+		
+		
+		try {
+			logger.info("in ajouter Contrat");
+			logger.debug("Je vais commencer l'ajout");
+			iemployeservice.ajouterContrat(contrat);
+			logger.info("out ajouter Contrat ");
+			return contrat.getReference();
+			}
+			catch (Exception e) { logger.error("Erreur dans ajouterContrat() : " + e); }
+		
 		return contrat.getReference();
+		
+		
+		
+		
 	}
 	
 	// http://localhost:8081/SpringMVC/servlet/affecterContratAEmploye/6/1
@@ -84,22 +145,57 @@ public class RestControlEmploye {
 	public void affecterContratAEmploye(@PathVariable("idcontrat")int contratId, @PathVariable("idemp")int employeId)
 	{
 		iemployeservice.affecterContratAEmploye(contratId, employeId);
+		
+		
+		
+		
+		try {
+			logger.info("in  affecterContratAEmploye");
+			logger.debug("Je vais commencer l'affectation");
+			iemployeservice.affecterContratAEmploye(contratId, employeId);
+			logger.info("out affecterContratAEmploye ");
+			}
+			catch (Exception e) { logger.error("Erreur dans affecterContratAEmploye() : " + e); }
+		
+		
+		
 	}
-
 	
    
    // URL : http://localhost:8081/SpringMVC/servlet/getEmployePrenomById/2
    @GetMapping(value = "getEmployePrenomById/{idemp}")
    @ResponseBody
    public String getEmployePrenomById(@PathVariable("idemp")int employeId) {
-		return iemployeservice.getEmployePrenomById(employeId);
-	}
+		
+		
+		
+ 		try {
+ 			logger.info("in  getEmployePrenomById");
+ 			logger.debug("Je vais commencer la recherche");
+ 			logger.info("out de getEmployePrenomById ");
+ 			return iemployeservice.getEmployePrenomById(employeId);
+ 			}
+ 			catch (Exception e) { logger.error("Erreur dans getEmployePrenomById() : " + e); }
+ 		
+ 		return iemployeservice.getEmployePrenomById(employeId);
 
+ 		
+ 	}
     // URL : http://localhost:8081/SpringMVC/servlet/deleteEmployeById/1
     @DeleteMapping("/deleteEmployeById/{idemp}") 
 	@ResponseBody 
 	public void deleteEmployeById(@PathVariable("idemp")int employeId) {
-		iemployeservice.deleteEmployeById(employeId);
+	iemployeservice.deleteEmployeById(employeId);
+		
+		
+		try {
+			logger.info("in  deleteEmployeById");
+			logger.debug("Je vais commencer la supression");
+			logger.info("out de deleteEmployeById ");
+			iemployeservice.deleteEmployeById(employeId);
+			}
+			catch (Exception e) { logger.error("Erreur dans deleteEmployeById() : " + e); }
+		
 		
 	}
     
@@ -108,40 +204,104 @@ public class RestControlEmploye {
 	@ResponseBody
 	public void deleteContratById(@PathVariable("idcontrat")int contratId) {
 		iemployeservice.deleteContratById(contratId);
+		
+		try {
+			logger.info("in  deleteContratById");
+			logger.debug("Je vais commencer la supression");
+			logger.info("out de deleteContratById ");
+			iemployeservice.deleteContratById(contratId);
+			}
+			catch (Exception e) { logger.error("Erreur dans deleteContratById() : " + e); }
+		
 	}
+
 
     
     // URL : http://localhost:8081/SpringMVC/servlet/getNombreEmployeJPQL
     @GetMapping(value = "getNombreEmployeJPQL")
     @ResponseBody
-	public int getNombreEmployeJPQL() {
+public int getNombreEmployeJPQL() {
+		
+
+		try {
+			logger.info("in  getNombreEmployeJPQL");
+			logger.debug("Je vais commencer la recherche");
+			logger.info("out de getNombreEmployeJPQL ");
+			return iemployeservice.getNombreEmployeJPQL();
+			}
+			catch (Exception e) { logger.error("Erreur dans getNombreEmployeJPQL() : " + e); }
 		
 		return iemployeservice.getNombreEmployeJPQL();
+
+		
+		
+		
 	}
 
     // URL : http://localhost:8081/SpringMVC/servlet/getAllEmployeNamesJPQL
     @GetMapping(value = "getAllEmployeNamesJPQL")
     @ResponseBody
-	public List<String> getAllEmployeNamesJPQL() {
+public List<String> getAllEmployeNamesJPQL() {
+		
+    	try {
+			logger.info("in  getAllEmployeNamesJPQL");
+			logger.debug("Je vais commencer la recherche");
+			logger.info("out de getAllEmployeNamesJPQL ");
+			return iemployeservice.getAllEmployeNamesJPQL();
+			}
+			catch (Exception e) { logger.error("Erreur dans getAllEmployeNamesJPQL() : " + e); }
 		
 		return iemployeservice.getAllEmployeNamesJPQL();
+
+		
+    	
 	}
+
 
     // URL : http://localhost:8081/SpringMVC/servlet/getAllEmployeByEntreprise/1
     @GetMapping(value = "getAllEmployeByEntreprise/{identreprise}")
     @ResponseBody
 	public List<Employe> getAllEmployeByEntreprise(@PathVariable("identreprise") int identreprise) {
+		
+		
+		
+		
+		
+		
+		try {
+			logger.info("in  getAllEmployeByEntreprise");
+			logger.debug("Je vais commencer la recherche");
+	    	Entreprise entreprise=ientrepriseservice.getEntrepriseById(identreprise);
+			logger.info("out de getAllEmployeByEntreprise ");
+			return iemployeservice.getAllEmployeByEntreprise(entreprise);
+			}
+			catch (Exception e) { logger.error("Erreur dans getAllEmployeByEntreprise() : " + e); }
     	Entreprise entreprise=ientrepriseservice.getEntrepriseById(identreprise);
 		return iemployeservice.getAllEmployeByEntreprise(entreprise);
+		
 	}
+
 
  // Modifier email : http://localhost:8081/SpringMVC/servlet/mettreAjourEmailByEmployeIdJPQL/2/newemail
  	@PutMapping(value = "/mettreAjourEmailByEmployeIdJPQL/{id}/{newemail}") 
  	@ResponseBody
-	public void mettreAjourEmailByEmployeIdJPQL(@PathVariable("newemail") String email, @PathVariable("id") int employeId) {	
-	iemployeservice.mettreAjourEmailByEmployeIdJPQL(email, employeId);
-		
-	}
+ 	public void mettreAjourEmailByEmployeIdJPQL(@PathVariable("newemail") String email, @PathVariable("id") int employeId) {	
+ 		iemployeservice.mettreAjourEmailByEmployeIdJPQL(email, employeId);
+ 			
+ 		
+ 		
+ 		
+ 		try {
+ 			logger.info("in  mettreAjourEmailByEmployeIdJPQL");
+ 			logger.debug("Je vais commencer la mise à jour");
+ 			iemployeservice.mettreAjourEmailByEmployeIdJPQL(email, employeId);
+ 			logger.info("out Mise à jour ");
+ 			}
+ 			catch (Exception e) { logger.error("Erreur dans mettreAjourEmailByEmployeIdJPQL() : " + e); }
+ 		
+ 		
+ 		
+ 		}
 
     // URL : http://localhost:8081/SpringMVC/servlet/deleteAllContratJPQL
     @DeleteMapping("/deleteAllContratJPQL") 
@@ -149,38 +309,96 @@ public class RestControlEmploye {
 	public void deleteAllContratJPQL() {
 		iemployeservice.deleteAllContratJPQL();
 		
+		try {
+			logger.info("in  deleteAllContratJPQL");
+			logger.debug("Je vais commencer la suppression");
+			iemployeservice.deleteAllContratJPQL();
+			logger.info("out deleteAllContratJPQL ");
+			}
+			catch (Exception e) { logger.error("Erreur dans deleteAllContratJPQLsq() : " + e); }
+		
+		
 	}
 
     // URL : http://localhost:8081/SpringMVC/servlet/getSalaireByEmployeIdJPQL/2
     @GetMapping(value = "getSalaireByEmployeIdJPQL/{idemp}")
     @ResponseBody
 	public float getSalaireByEmployeIdJPQL(@PathVariable("idemp")int employeId) {
+    	try {
+			logger.info("in  getSalaireByEmployeIdJPQL");
+			logger.debug("Je vais commencer la recherche");
+	    
+			logger.info("out de getSalaireByEmployeIdJPQL ");
+			return iemployeservice.getSalaireByEmployeIdJPQL(employeId);
+			}
+			catch (Exception e) { logger.error("Erreur dans getSalaireByEmployeIdJPQL() : " + e); }
 		return iemployeservice.getSalaireByEmployeIdJPQL(employeId);
+	
+		
+		
+		
+		
 	}
-
     // URL : http://localhost:8081/SpringMVC/servlet/getSalaireMoyenByDepartementId/2
     @GetMapping(value = "getSalaireMoyenByDepartementId/{iddept}")
     @ResponseBody
-	public Double getSalaireMoyenByDepartementId(@PathVariable("iddept")int departementId) {
+public Double getSalaireMoyenByDepartementId(@PathVariable("iddept")int departementId) {
+	
+    	{
+
+		try {
+			logger.info("in  getSalaireMoyenByDepartementId");
+			logger.debug("Je vais commencer la recherche");
+	    
+			logger.info("out de getSalaireMoyenByDepartementId ");
+			return iemployeservice.getSalaireMoyenByDepartementId(departementId);
+			}
+			catch (Exception e) { logger.error("Erreur dans getSalaireMoyenByDepartementId() : " + e); }
 		return iemployeservice.getSalaireMoyenByDepartementId(departementId);
 	}
+	
+		
+    
+    }
+
 
 	
 	//TODO
-	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, Date dateDebut,
+    public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, Date dateDebut,
 			Date dateFin) {
-		return iemployeservice.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
-	}
 
+	
+		try {
+			logger.info("in  getTimesheetsByMissionAndDate");
+			logger.debug("Je vais commencer la recherche");
+	    
+			logger.info("out de getTimesheetsByMissionAndDate ");
+			return iemployeservice.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
+			}
+			catch (Exception e) { logger.error("Erreur dans getTimesheetsByMissionAndDate() : " + e); }
+		return iemployeservice.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
+	
+	}
 
 	 // URL : http://localhost:8081/SpringMVC/servlet/getAllEmployes
 	@GetMapping(value = "/getAllEmployes")
     @ResponseBody
-	public List<Employe> getAllEmployes() {
+public List<Employe> getAllEmployes() {
 		
+	
+		
+		try {
+			logger.info("in  getAllEmployes");
+			logger.debug("Je vais commencer la recherche");
+	    
+			logger.info("out de getAllEmployes ");
+			return iemployeservice.getAllEmployes();
+			}
+			catch (Exception e) { logger.error("Erreur dans getAllEmployes() : " + e); }
 		return iemployeservice.getAllEmployes();
-	}
 
+		
+	}
 	
 	
 }
