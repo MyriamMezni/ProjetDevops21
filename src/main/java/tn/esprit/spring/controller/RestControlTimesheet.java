@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Mission;
+import tn.esprit.spring.entities.MissionDTO;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
@@ -43,8 +44,8 @@ EmployeRepository er;
 	//hethe ajout mission zidou acolade"id":4,"name":"mamission", "description":"c ma mission"
 	@PostMapping("/ajouterMission")
 	@ResponseBody
-	public int ajouterMission(@RequestBody Mission mission) {
-		itimesheetservice.ajouterMission(mission);
+	public int ajouterMission(@RequestBody MissionDTO missiondto) {
+		 Mission mission = new Mission(missiondto);
 		try {
 			logger.info("in ajouter Mission");
 			logger.debug("Je vais commencer l'ajout");

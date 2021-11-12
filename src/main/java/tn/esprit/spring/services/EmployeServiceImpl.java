@@ -37,7 +37,9 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
-		Employe employe = employeRepository.findById(employeId).get();
+		Employe employe = employeRepository.findById(employeId).orElse(null);
+		if (employe ==null)
+		{ throw new IllegalArgumentException("The argument cannot be null");}
 		employe.setEmail(email);
 		employeRepository.save(employe);
 
