@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import tn.esprit.spring.entities.Employe;
-import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.services.IEmployeService;
@@ -42,7 +40,7 @@ EmployeRepository er;
 	
 	
 	// http://localhost:8081/SpringMVC/servlet/ajouterMission
-	//{"id":4,"name":"mamission", "description":"c ma mission"}
+	//hethe ajout mission zidou acolade"id":4,"name":"mamission", "description":"c ma mission"
 	@PostMapping("/ajouterMission")
 	@ResponseBody
 	public int ajouterMission(@RequestBody Mission mission) {
@@ -54,7 +52,7 @@ EmployeRepository er;
 			logger.info("out ajouter Mission");
 			return mission.getId();
 			}
-		catch (Exception e) { logger.error("Erreur dans ajouterMission() : " + e); }
+		catch (Exception e) { logger.error("Erreur dans ajouterMission() : " , e); }
 		return mission.getId();
 	}
 
@@ -62,20 +60,20 @@ EmployeRepository er;
 	@PutMapping(value = "/affecterMissionADepartement/{idmission}/{iddept}") 
 	public void affecterMissionADepartement(@PathVariable("idmission") int missionId, @PathVariable("iddept") int depId) {
 	
-		//itimesheetservice.affecterMissionADepartement(missionId, depId);
+		
 		try {
 			logger.info("in  affecter MissionADepartement");
 			logger.debug("Je vais commencer l'affectation");
 			itimesheetservice.affecterMissionADepartement(missionId, depId);
 			logger.info("out affecterMissionADepartement ");
 			}
-			catch (Exception e) { logger.error("Erreur dans affecterMissionADepartement() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans affecterMissionADepartement() : " , e); }
 		
 
 	}
 	
 	// http://localhost:8081/SpringMVC/servlet/ajouterTimesheet
-    //{"missionId":1,"employeId":2,"dateDebut":"2020-03-01","dateFin":"2021-03-01"}
+    //hetha tzidou f postman ma acolade "missionId":1,"employeId":2,"dateDebut":"2020-03-01","dateFin":"2021-03-01"
 	
 	@PostMapping("/ajouterTimesheet/idmission/idemp/dated/datef")
 	@ResponseBody
@@ -86,11 +84,11 @@ EmployeRepository er;
 		try {
 			logger.info("in ajouter Timesheet");
 			logger.debug("Je vais commencer l'ajout");
-			itimesheetservice.ajouterTimesheet(missionId, employeId, dateDebut, dateFin);;
+			itimesheetservice.ajouterTimesheet(missionId, employeId, dateDebut, dateFin);
 			logger.info("out ajouter Timesheet");
 			
 			}
-		catch (Exception e) { logger.error("Erreur dans ajouterTimesheet() : " + e); }
+		catch (Exception e) { logger.error("Erreur dans ajouterTimesheet() : " , e); }
 		
 	}
 
@@ -102,11 +100,11 @@ EmployeRepository er;
 		try {
 			logger.info("in valider Timesheet");
 			logger.debug("Je vais commencer la validation");
-			itimesheetservice.ajouterTimesheet(missionId, employeId, dateDebut, dateFin);;
+			itimesheetservice.ajouterTimesheet(missionId, employeId, dateDebut, dateFin);
 			logger.info("out validation Timesheet");
 			
 			}
-		catch (Exception e) { logger.error("Erreur dans validerTimesheet() : " + e); }
+		catch (Exception e) { logger.error("Erreur dans validerTimesheet() : " , e); }
 
 	}
 	
@@ -122,7 +120,7 @@ EmployeRepository er;
 			logger.info("out de findAllMissionByEmployeJPQL ");
 			return itimesheetservice.findAllMissionByEmployeJPQL(employeId);
 			}
-			catch (Exception e) { logger.error("Erreur dans getAllEmployeByEntreprise() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans getAllEmployeByEntreprise() : " , e); }
     	return itimesheetservice.findAllMissionByEmployeJPQL(employeId);
 	}
 
@@ -139,7 +137,7 @@ EmployeRepository er;
 			logger.info("out de getAllEmployeByEntreprise ");
 			return itimesheetservice.getAllEmployeByMission(missionId);
 			}
-			catch (Exception e) { logger.error("Erreur dans getAllEmployeByEntreprise() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans getAllEmployeByMission() : " , e); }
 		return itimesheetservice.getAllEmployeByMission(missionId);
 		
 	}

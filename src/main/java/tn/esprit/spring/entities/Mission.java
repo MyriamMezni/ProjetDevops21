@@ -10,10 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
+
+
 @Entity
 public class Mission implements Serializable {
 
 	private static final long serialVersionUID = -5369734855993305723L;
+	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -78,6 +82,8 @@ public class Mission implements Serializable {
 	public void setTimesheets(List<Timesheet> timesheets) {
 		this.timesheets = timesheets;
 	}
+	
+	
 	
 	
 
