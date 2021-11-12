@@ -1,6 +1,6 @@
 package tn.esprit.spring.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.Date;
 
@@ -31,7 +31,7 @@ ContratRepository CR;
 @Test
 public void ajouterEmploye()
 {
-Employe emp=new Employe("test", "test", "test", true, Role.ADMINISTRATEUR);
+Employe emp=new Employe("testmyriam", "testmyriam", "testmyriam", true, Role.ADMINISTRATEUR);
 int a=ES.ajouterEmploye(emp);
 assertEquals(emp.getId(), a);
 }
@@ -39,7 +39,7 @@ assertEquals(emp.getId(), a);
 @Test
 public void ajouterContrat()
 {
-Contrat C=new Contrat(new Date(), "Contrat annuel", 350);
+Contrat C=new Contrat(new Date(), "Contrat annuel myriam", 350);
 int a=ES.ajouterContrat(C);
 assertEquals(C.getReference(), a);
 }
@@ -48,8 +48,8 @@ assertEquals(C.getReference(), a);
 @Test
 public void mettreAjourEmailByEmployeId()
 {
-	String email="new email";
-	int employeId=3;
+	String email="new email myriam";
+	int employeId=1;
 	Employe emp=ER.findById(employeId).get();
 	emp.setEmail(email);
 	ER.save(emp);
@@ -61,8 +61,8 @@ public void mettreAjourEmailByEmployeId()
 @Test
 public void affecterContratAEmploye()
 {
-	int contratId=17;
-	int employeId=2;
+	int contratId=20;
+	int employeId=1;
 	Contrat C=CR.findById(contratId).get();
 	Employe emp=ER.findById(employeId).get();
 	C.setEmploye(emp);
@@ -72,7 +72,7 @@ public void affecterContratAEmploye()
 @Test
 public void getEmployePrenomById()
 {
-	int employeId=2;
+	int employeId=1;
 String nom=ES.getEmployePrenomById(employeId);
 	assertEquals("c'est bon", ES.getEmployePrenomById(employeId),nom );
 }
@@ -81,15 +81,19 @@ String nom=ES.getEmployePrenomById(employeId);
 @Test
 public void deleteEmployeById()
 {
-	//int employeId=4;
-	//ES.deleteEmployeById(employeId);
+	int employeId=5;
+	ES.deleteEmployeById(employeId);
+	assertEquals("c'est bon",employeId,5 );
+	
 }
 
 @Test
 public void deleteContratById()
 {
-	//int contratId=4;
-	//ES.deleteContratById(contratId);
+	int contratId=20;
+	ES.deleteContratById(contratId);
+	assertEquals("C'est bon",contratId ,21);
+
 }
 @Test
 public void getNombreEmployeJPQL()
@@ -102,8 +106,8 @@ public void getNombreEmployeJPQL()
 @Test
 public void deleteAllContratJPQL()
 {
-	//ES.deleteAllContratJPQL();
-	//assertEquals(0,CR.count());
+	ES.deleteAllContratJPQL();
+	assertEquals(0,CR.count());
 
 }
 
