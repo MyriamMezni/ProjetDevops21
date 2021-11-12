@@ -35,6 +35,8 @@ public class RestControlEmploye {
 	IEntrepriseService ientrepriseservice;
 	@Autowired
 	ITimesheetService itimesheetservice;
+	
+	String cst="je vais commencer la recherche";
 
 	
 	// http://localhost:8081/SpringMVC/servlet/ajouterEmployer
@@ -167,7 +169,7 @@ public class RestControlEmploye {
 		
  		try {
  			logger.info("in  getEmployePrenomById");
- 			logger.debug("Je vais commencer la recherche");
+ 			logger.debug(cst);
  			logger.info("out de getEmployePrenomById ");
  			return iemployeservice.getEmployePrenomById(employeId);
  			}
@@ -221,7 +223,7 @@ public int getNombreEmployeJPQL() {
 
 		try {
 			logger.info("in  getNombreEmployeJPQL");
-			logger.debug("Je vais commencer la recherche");
+			logger.debug(cst);
 			logger.info("out de getNombreEmployeJPQL ");
 			return iemployeservice.getNombreEmployeJPQL();
 			}
@@ -241,7 +243,7 @@ public List<String> getAllEmployeNamesJPQL() {
 		
     	try {
 			logger.info("in  getAllEmployeNamesJPQL");
-			logger.debug("Je vais commencer la recherche");
+			logger.debug(cst);
 			logger.info("out de getAllEmployeNamesJPQL ");
 			return iemployeservice.getAllEmployeNamesJPQL();
 			}
@@ -266,7 +268,7 @@ public List<String> getAllEmployeNamesJPQL() {
 		
 		try {
 			logger.info("in  getAllEmployeByEntreprise");
-			logger.debug("Je vais commencer la recherche");
+			logger.debug(cst);
 	    	Entreprise entreprise=ientrepriseservice.getEntrepriseById(identreprise);
 			logger.info("out de getAllEmployeByEntreprise ");
 			return iemployeservice.getAllEmployeByEntreprise(entreprise);
@@ -322,7 +324,7 @@ public List<String> getAllEmployeNamesJPQL() {
 	public float getSalaireByEmployeIdJPQL(@PathVariable("idemp")int employeId) {
     	try {
 			logger.info("in  getSalaireByEmployeIdJPQL");
-			logger.debug("Je vais commencer la recherche");
+			logger.debug(cst);
 	    
 			logger.info("out de getSalaireByEmployeIdJPQL ");
 			return iemployeservice.getSalaireByEmployeIdJPQL(employeId);
@@ -344,7 +346,7 @@ public Double getSalaireMoyenByDepartementId(@PathVariable("iddept")int departem
 
 		try {
 			logger.info("in  getSalaireMoyenByDepartementId");
-			logger.debug("Je vais commencer la recherche");
+			logger.debug(cst);
 	    
 			logger.info("out de getSalaireMoyenByDepartementId ");
 			return iemployeservice.getSalaireMoyenByDepartementId(departementId);
@@ -366,7 +368,7 @@ public Double getSalaireMoyenByDepartementId(@PathVariable("iddept")int departem
 	
 		try {
 			logger.info("in  getTimesheetsByMissionAndDate");
-			logger.debug("Je vais commencer la recherche");
+			logger.debug(cst);
 	    
 			logger.info("out de getTimesheetsByMissionAndDate ");
 			return iemployeservice.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
@@ -385,7 +387,7 @@ public List<Employe> getAllEmployes() {
 		
 		try {
 			logger.info("in  getAllEmployes");
-			logger.debug("Je vais commencer la recherche");
+			logger.debug(cst);
 	    
 			logger.info("out de getAllEmployes ");
 			return iemployeservice.getAllEmployes();
