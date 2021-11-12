@@ -40,7 +40,9 @@ public class EmployeServiceImpl implements IEmployeService {
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
 		Employe employe = employeRepository.findById(employeId).orElse(null);
 		if (employe ==null)
+
 		{ throw new IllegalArgumentException(aff);}
+
 		employe.setEmail(email);
 		employeRepository.save(employe);
 
