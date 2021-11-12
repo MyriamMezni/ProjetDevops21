@@ -6,16 +6,12 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -56,7 +52,7 @@ public class RestControlEmploye {
 			logger.info("out ajouter Employe");
 			return employe;
 			}
-			catch (Exception e) { logger.error("Erreur dans ajouterEmploye() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans ajouterEmploye() : " , e); }
 		
 		return employe;
 		
@@ -75,7 +71,7 @@ public class RestControlEmploye {
 			iemployeservice.mettreAjourEmailByEmployeId(email, employeId);
 			logger.info("out Mise à jour ");
 			}
-			catch (Exception e) { logger.error("Erreur dans mettreAjourEmailByEmployeId() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans mettreAjourEmailByEmployeId() : " , e); }
 		
 		
 		
@@ -90,7 +86,7 @@ public class RestControlEmploye {
 			iemployeservice.affecterEmployeADepartement(employeId, depId);
 			logger.info("out affecterEmployeADepartement ");
 			}
-			catch (Exception e) { logger.error("Erreur dans affecterEmployeADepartement() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans affecterEmployeADepartement() : " , e); }
 		
 		
 	}
@@ -107,7 +103,7 @@ public class RestControlEmploye {
 			iemployeservice.desaffecterEmployeDuDepartement(employeId, depId);
 			logger.info("out de desaffecterEmployeDuDepartement ");
 			}
-			catch (Exception e) { logger.error("Erreur dans desaffecterEmployeDuDepartement() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans desaffecterEmployeDuDepartement() : " , e); }
 		
 		
 	}
@@ -131,7 +127,7 @@ public class RestControlEmploye {
 			logger.info("out ajouter Contrat ");
 			return contrat.getReference();
 			}
-			catch (Exception e) { logger.error("Erreur dans ajouterContrat() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans ajouterContrat() : " , e); }
 		
 		return contrat.getReference();
 		
@@ -155,7 +151,7 @@ public class RestControlEmploye {
 			iemployeservice.affecterContratAEmploye(contratId, employeId);
 			logger.info("out affecterContratAEmploye ");
 			}
-			catch (Exception e) { logger.error("Erreur dans affecterContratAEmploye() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans affecterContratAEmploye() : " , e); }
 		
 		
 		
@@ -175,7 +171,7 @@ public class RestControlEmploye {
  			logger.info("out de getEmployePrenomById ");
  			return iemployeservice.getEmployePrenomById(employeId);
  			}
- 			catch (Exception e) { logger.error("Erreur dans getEmployePrenomById() : " + e); }
+ 			catch (Exception e) { logger.error("Erreur dans getEmployePrenomById() : " , e); }
  		
  		return iemployeservice.getEmployePrenomById(employeId);
 
@@ -194,7 +190,7 @@ public class RestControlEmploye {
 			logger.info("out de deleteEmployeById ");
 			iemployeservice.deleteEmployeById(employeId);
 			}
-			catch (Exception e) { logger.error("Erreur dans deleteEmployeById() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans deleteEmployeById() : " , e); }
 		
 		
 	}
@@ -211,7 +207,7 @@ public class RestControlEmploye {
 			logger.info("out de deleteContratById ");
 			iemployeservice.deleteContratById(contratId);
 			}
-			catch (Exception e) { logger.error("Erreur dans deleteContratById() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans deleteContratById() : " , e); }
 		
 	}
 
@@ -229,7 +225,7 @@ public int getNombreEmployeJPQL() {
 			logger.info("out de getNombreEmployeJPQL ");
 			return iemployeservice.getNombreEmployeJPQL();
 			}
-			catch (Exception e) { logger.error("Erreur dans getNombreEmployeJPQL() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans getNombreEmployeJPQL() : " , e); }
 		
 		return iemployeservice.getNombreEmployeJPQL();
 
@@ -249,7 +245,7 @@ public List<String> getAllEmployeNamesJPQL() {
 			logger.info("out de getAllEmployeNamesJPQL ");
 			return iemployeservice.getAllEmployeNamesJPQL();
 			}
-			catch (Exception e) { logger.error("Erreur dans getAllEmployeNamesJPQL() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans getAllEmployeNamesJPQL() : " , e); }
 		
 		return iemployeservice.getAllEmployeNamesJPQL();
 
@@ -275,7 +271,7 @@ public List<String> getAllEmployeNamesJPQL() {
 			logger.info("out de getAllEmployeByEntreprise ");
 			return iemployeservice.getAllEmployeByEntreprise(entreprise);
 			}
-			catch (Exception e) { logger.error("Erreur dans getAllEmployeByEntreprise() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans getAllEmployeByEntreprise() : " , e); }
     	Entreprise entreprise=ientrepriseservice.getEntrepriseById(identreprise);
 		return iemployeservice.getAllEmployeByEntreprise(entreprise);
 		
@@ -297,7 +293,7 @@ public List<String> getAllEmployeNamesJPQL() {
  			iemployeservice.mettreAjourEmailByEmployeIdJPQL(email, employeId);
  			logger.info("out Mise à jour ");
  			}
- 			catch (Exception e) { logger.error("Erreur dans mettreAjourEmailByEmployeIdJPQL() : " + e); }
+ 			catch (Exception e) { logger.error("Erreur dans mettreAjourEmailByEmployeIdJPQL() : " , e); }
  		
  		
  		
@@ -315,7 +311,7 @@ public List<String> getAllEmployeNamesJPQL() {
 			iemployeservice.deleteAllContratJPQL();
 			logger.info("out deleteAllContratJPQL ");
 			}
-			catch (Exception e) { logger.error("Erreur dans deleteAllContratJPQLsq() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans deleteAllContratJPQLsq() : " , e); }
 		
 		
 	}
@@ -331,7 +327,7 @@ public List<String> getAllEmployeNamesJPQL() {
 			logger.info("out de getSalaireByEmployeIdJPQL ");
 			return iemployeservice.getSalaireByEmployeIdJPQL(employeId);
 			}
-			catch (Exception e) { logger.error("Erreur dans getSalaireByEmployeIdJPQL() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans getSalaireByEmployeIdJPQL() : " , e); }
 		return iemployeservice.getSalaireByEmployeIdJPQL(employeId);
 	
 		
@@ -353,7 +349,7 @@ public Double getSalaireMoyenByDepartementId(@PathVariable("iddept")int departem
 			logger.info("out de getSalaireMoyenByDepartementId ");
 			return iemployeservice.getSalaireMoyenByDepartementId(departementId);
 			}
-			catch (Exception e) { logger.error("Erreur dans getSalaireMoyenByDepartementId() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans getSalaireMoyenByDepartementId() : " , e); }
 		return iemployeservice.getSalaireMoyenByDepartementId(departementId);
 	}
 	
@@ -375,7 +371,7 @@ public Double getSalaireMoyenByDepartementId(@PathVariable("iddept")int departem
 			logger.info("out de getTimesheetsByMissionAndDate ");
 			return iemployeservice.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
 			}
-			catch (Exception e) { logger.error("Erreur dans getTimesheetsByMissionAndDate() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans getTimesheetsByMissionAndDate() : " , e); }
 		return iemployeservice.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
 	
 	}
@@ -394,7 +390,7 @@ public List<Employe> getAllEmployes() {
 			logger.info("out de getAllEmployes ");
 			return iemployeservice.getAllEmployes();
 			}
-			catch (Exception e) { logger.error("Erreur dans getAllEmployes() : " + e); }
+			catch (Exception e) { logger.error("Erreur dans getAllEmployes() : " , e); }
 		return iemployeservice.getAllEmployes();
 
 		

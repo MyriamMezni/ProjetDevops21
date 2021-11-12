@@ -37,7 +37,9 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
-		Employe employe = employeRepository.findById(employeId).get();
+		Employe employe = employeRepository.findById(employeId).orElse(null);
+		if (employe ==null)
+		{ throw new IllegalArgumentException("The argument cannot be null");}
 		employe.setEmail(email);
 		employeRepository.save(employe);
 
@@ -45,9 +47,11 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Transactional	
 	public void affecterEmployeADepartement(int employeId, int depId) {
-		Departement depManagedEntity = deptRepoistory.findById(depId).get();
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
-
+		Departement depManagedEntity = deptRepoistory.findById(depId).orElse(null);
+		Employe employeManagedEntity = employeRepository.findById(employeId).orElse(null);
+		if ((depManagedEntity ==null)||(employeManagedEntity==null))
+		{ throw new IllegalArgumentException("The argument cannot be null");}
+	
 		if(depManagedEntity.getEmployes() == null){
 
 			List<Employe> employes = new ArrayList<>();
@@ -63,8 +67,10 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Transactional
 	public void desaffecterEmployeDuDepartement(int employeId, int depId)
 	{
-		Departement dep = deptRepoistory.findById(depId).get();
-
+		Departement dep = deptRepoistory.findById(depId).orElse(null);
+		if (dep ==null)
+		{ throw new IllegalArgumentException("The argument cannot be null");}
+	
 		int employeNb = dep.getEmployes().size();
 		for(int index = 0; index < employeNb; index++){
 			if(dep.getEmployes().get(index).getId() == employeId){
@@ -80,22 +86,29 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void affecterContratAEmploye(int contratId, int employeId) {
-		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
-
+		Contrat contratManagedEntity = contratRepoistory.findById(contratId).orElse(null);
+		Employe employeManagedEntity = employeRepository.findById(employeId).orElse(null);
+		if ((contratManagedEntity ==null)||(employeManagedEntity==null))
+		{ throw new IllegalArgumentException("The argument cannot be null");}
+	
 		contratManagedEntity.setEmploye(employeManagedEntity);
 		contratRepoistory.save(contratManagedEntity);
 		
 	}
 
 	public String getEmployePrenomById(int employeId) {
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
+		Employe employeManagedEntity = employeRepository.findById(employeId).orElse(null);
+		if(employeManagedEntity==null)
+		{ throw new IllegalArgumentException("The argument cannot be null");}
+	
 		return employeManagedEntity.getPrenom();
 	}
 	public void deleteEmployeById(int employeId)
 	{
-		Employe employe = employeRepository.findById(employeId).get();
-
+		Employe employe = employeRepository.findById(employeId).orElse(null);
+		if (employe ==null)
+		{ throw new IllegalArgumentException("The argument cannot be null");}
+	
 		//Desaffecter l'employe de tous les departements
 		//c'est le bout master qui permet de mettre a jour
 		//la table d'association
@@ -107,7 +120,10 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void deleteContratById(int contratId) {
-		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
+		Contrat contratManagedEntity = contratRepoistory.findById(contratId).orElse(null);
+		if (contratManagedEntity ==null)
+		{ throw new IllegalArgumentException("The argument cannot be null");}
+	
 		contratRepoistory.delete(contratManagedEntity);
 
 	}
