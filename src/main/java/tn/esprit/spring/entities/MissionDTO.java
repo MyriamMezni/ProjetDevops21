@@ -1,10 +1,11 @@
 package tn.esprit.spring.entities;
 
 public class MissionDTO {
+	
 	private int id;
-
 	private String name;
 	private String description;
+
 	public String getName() {
 		return name;
 	}

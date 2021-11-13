@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Contrat;
+import tn.esprit.spring.entities.ContratDTO;
 import tn.esprit.spring.entities.Employe;
+import tn.esprit.spring.entities.EmployeDTO;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.entities.Timesheet;
@@ -44,9 +46,9 @@ public class RestControlEmploye {
 	
 	@PostMapping("/ajouterEmployer")
 	@ResponseBody
-	public Employe ajouterEmploye(@RequestBody Employe employe)
+	public Employe ajouterEmploye(@RequestBody EmployeDTO employedto)
 	{
-		iemployeservice.ajouterEmploye(employe);
+		Employe employe=new Employe(employedto);
 		try {
 			logger.info("in ajouter Employe");
 			logger.debug("Je vais commencer l'ajout");
@@ -64,7 +66,6 @@ public class RestControlEmploye {
 	@PutMapping(value = "/modifyEmail/{id}/{newemail}") 
 	@ResponseBody
 	public void mettreAjourEmailByEmployeId(@PathVariable("newemail") String email, @PathVariable("id") int employeId) {
-		iemployeservice.mettreAjourEmailByEmployeId(email, employeId);
 		
 		
 		try {
@@ -81,7 +82,6 @@ public class RestControlEmploye {
 	// http://localhost:8081/SpringMVC/servlet/affecterEmployeADepartement/1/1
 	@PutMapping(value = "/affecterEmployeADepartement/{idemp}/{iddept}") 
 	public void affecterEmployeADepartement(@PathVariable("idemp")int employeId, @PathVariable("iddept")int depId) {
-		iemployeservice.affecterEmployeADepartement(employeId, depId);
 		try {
 			logger.info("in  affecterEmployeADepartement");
 			logger.debug("Je vais commencer l'affectation");
@@ -97,8 +97,6 @@ public class RestControlEmploye {
 	@PutMapping(value = "/desaffecterEmployeDuDepartement/{idemp}/{iddept}") 
 	public void desaffecterEmployeDuDepartement(@PathVariable("idemp")int employeId, @PathVariable("iddept")int depId)
 	{
-		iemployeservice.desaffecterEmployeDuDepartement(employeId, depId);
-
 		try {
 			logger.info("in  desaffecterEmployeDuDepartement");
 			logger.debug("Je vais commencer la desaffectation");
@@ -114,14 +112,8 @@ public class RestControlEmploye {
 	//{"reference":6,"dateDebut":"2020-03-01","salaire":2000,"typeContrat":"CDD"}
 	@PostMapping("/ajouterContrat")
 	@ResponseBody
-	public int ajouterContrat(@RequestBody Contrat contrat) {
-		iemployeservice.ajouterContrat(contrat);
-		
-		
-		
-		
-		
-		
+	public int ajouterContrat(@RequestBody ContratDTO contratDTO) {	
+		Contrat contrat = new Contrat(contratDTO);
 		try {
 			logger.info("in ajouter Contrat");
 			logger.debug("Je vais commencer l'ajout");
@@ -142,10 +134,6 @@ public class RestControlEmploye {
    @PutMapping(value = "/affecterContratAEmploye/{idcontrat}/{idemp}") 
 	public void affecterContratAEmploye(@PathVariable("idcontrat")int contratId, @PathVariable("idemp")int employeId)
 	{
-		iemployeservice.affecterContratAEmploye(contratId, employeId);
-		
-		
-		
 		
 		try {
 			logger.info("in  affecterContratAEmploye");
@@ -165,8 +153,6 @@ public class RestControlEmploye {
    @ResponseBody
    public String getEmployePrenomById(@PathVariable("idemp")int employeId) {
 		
-		
-		
  		try {
  			logger.info("in  getEmployePrenomById");
  			logger.debug(cst);
@@ -182,10 +168,7 @@ public class RestControlEmploye {
     // URL : http://localhost:8081/SpringMVC/servlet/deleteEmployeById/1
     @DeleteMapping("/deleteEmployeById/{idemp}") 
 	@ResponseBody 
-	public void deleteEmployeById(@PathVariable("idemp")int employeId) {
-	iemployeservice.deleteEmployeById(employeId);
-		
-		
+	public void deleteEmployeById(@PathVariable("idemp")int employeId) {	
 		try {
 			logger.info("in  deleteEmployeById");
 			logger.debug("Je vais commencer la supression");
@@ -201,8 +184,6 @@ public class RestControlEmploye {
     @DeleteMapping("/deleteContratById/{idcontrat}") 
 	@ResponseBody
 	public void deleteContratById(@PathVariable("idcontrat")int contratId) {
-		iemployeservice.deleteContratById(contratId);
-		
 		try {
 			logger.info("in  deleteContratById");
 			logger.debug("Je vais commencer la supression");
@@ -219,7 +200,6 @@ public class RestControlEmploye {
     @GetMapping(value = "getNombreEmployeJPQL")
     @ResponseBody
 public int getNombreEmployeJPQL() {
-		
 
 		try {
 			logger.info("in  getNombreEmployeJPQL");
@@ -260,12 +240,6 @@ public List<String> getAllEmployeNamesJPQL() {
     @GetMapping(value = "getAllEmployeByEntreprise/{identreprise}")
     @ResponseBody
 	public List<Employe> getAllEmployeByEntreprise(@PathVariable("identreprise") int identreprise) {
-		
-		
-		
-		
-		
-		
 		try {
 			logger.info("in  getAllEmployeByEntreprise");
 			logger.debug(cst);
@@ -284,10 +258,6 @@ public List<String> getAllEmployeNamesJPQL() {
  	@PutMapping(value = "/mettreAjourEmailByEmployeIdJPQL/{id}/{newemail}") 
  	@ResponseBody
  	public void mettreAjourEmailByEmployeIdJPQL(@PathVariable("newemail") String email, @PathVariable("id") int employeId) {	
- 		iemployeservice.mettreAjourEmailByEmployeIdJPQL(email, employeId);
- 			
- 		
- 		
  		
  		try {
  			logger.info("in  mettreAjourEmailByEmployeIdJPQL");
@@ -305,7 +275,6 @@ public List<String> getAllEmployeNamesJPQL() {
     @DeleteMapping("/deleteAllContratJPQL") 
 	@ResponseBody
 	public void deleteAllContratJPQL() {
-		iemployeservice.deleteAllContratJPQL();
 		
 		try {
 			logger.info("in  deleteAllContratJPQL");
