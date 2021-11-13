@@ -82,4 +82,13 @@ public class Contrat implements Serializable {
 	}
 	
 	
+	public Contrat(ContratDTO Contratdto) {
+		this.reference=Contratdto.getReference();
+		this.dateDebut = Contratdto.getDateDebut();
+		this.typeContrat = Contratdto.getTypeContrat();
+		this.salaire = Contratdto.getSalaire();
+	}
+	
+	
+	
 }
