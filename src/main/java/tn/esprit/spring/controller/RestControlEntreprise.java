@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entities.Departement;
+import tn.esprit.spring.entities.DepartementDTO;
 import tn.esprit.spring.entities.Entreprise;
+import tn.esprit.spring.entities.EntrepriseDTO;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
 import tn.esprit.spring.services.ITimesheetService;
@@ -38,20 +40,20 @@ public class RestControlEntreprise {
 
 	@PostMapping("/ajouterEntreprise")
 	@ResponseBody
-	public int ajouterEntreprise(@RequestBody Entreprise ssiiConsulting) {
+	public int ajouterEntreprise(@RequestBody EntrepriseDTO ssiiConsulting) {
 		
-		
-		ientrepriseservice.ajouterEntreprise(ssiiConsulting);
+		Entreprise entreprise = new Entreprise(ssiiConsulting);
+		ientrepriseservice.ajouterEntreprise(entreprise);
 		try {
 			logger.info("in ajouterEntreprise");
 			logger.debug("Je vais commencer l'ajout");
-			ientrepriseservice.ajouterEntreprise(ssiiConsulting);
+			ientrepriseservice.ajouterEntreprise(entreprise);
 			logger.info("out ajouterEntreprise");
-			return ssiiConsulting.getId();
+			return entreprise.getId();
 			}
 			catch (Exception e) { logger.error("Erreur dans ajouterEntreprise() : " , e); }
 		
-		return ssiiConsulting.getId();
+		return entreprise.getId();
 	}
 	
 	// http://localhost:8081/SpringMVC/servlet/affecterDepartementAEntreprise/1/1
@@ -105,8 +107,10 @@ public class RestControlEntreprise {
 
  	@PostMapping("/ajouterDepartement")
  	@ResponseBody
-	public int ajouterDepartement(@RequestBody Departement dep) {
+	public int ajouterDepartement(@RequestBody DepartementDTO depart) {
+ 		Departement dep = new Departement(depart);
 		 ientrepriseservice.ajouterDepartement(dep);
+		 
 			try {
 				logger.info("in ajouterDepartement");
 				logger.debug("Je vais commencer l'ajout");

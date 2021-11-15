@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
@@ -19,6 +20,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
     EntrepriseRepository entrepriseRepoistory;
 	@Autowired
 	DepartementRepository deptRepoistory;
+	String aff="The argument cannot be nul";
 	
 	public int ajouterEntreprise(Entreprise entreprise) {
 		entrepriseRepoistory.save(entreprise);
@@ -36,16 +38,21 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 				// ==> c'est l'objet departement(le master) qui va mettre a jour l'association
 				//Rappel : la classe qui contient mappedBy represente le bout Slave
 				//Rappel : Dans une relation oneToMany le mappedBy doit etre du cote one.
-				Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).get();
-				Departement depManagedEntity = deptRepoistory.findById(depId).get();
-				
+				Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
+				if (entrepriseManagedEntity ==null)
+				{ throw new IllegalArgumentException(aff);}
+				Departement depManagedEntity = deptRepoistory.findById(depId).orElse(null);
+				if (depManagedEntity ==null)
+				{ throw new IllegalArgumentException(aff);}
 				depManagedEntity.setEntreprise(entrepriseManagedEntity);
 				deptRepoistory.save(depManagedEntity);
 		
 	}
 	
 	public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
-		Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).get();
+		Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
+		if (entrepriseManagedEntity ==null)
+		{ throw new IllegalArgumentException(aff);}
 		List<String> depNames = new ArrayList<>();
 		for(Departement dep : entrepriseManagedEntity.getDepartements()){
 			depNames.add(dep.getName());
@@ -53,20 +60,34 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		
 		return depNames;
 	}
+	
 
 	@Transactional
 	public void deleteEntrepriseById(int entrepriseId) {
-		entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).get());	
+		Entreprise entreprise = entrepriseRepoistory.findById(entrepriseId).orElse(null);
+		if (entreprise == null)
+		{	throw new IllegalArgumentException(aff);	}
+		entrepriseRepoistory.delete(entreprise);	
 	}
 
+	
+	
 	@Transactional
 	public void deleteDepartementById(int depId) {
-		deptRepoistory.delete(deptRepoistory.findById(depId).get());	
+		Departement departement = deptRepoistory.findById(depId).orElse(null);
+		if (departement == null)
+		{	throw new IllegalArgumentException(aff);	}
+		deptRepoistory.delete(departement);	
 	}
+
 
 
 	public Entreprise getEntrepriseById(int entrepriseId) {
-		return entrepriseRepoistory.findById(entrepriseId).get();	
+		 Entreprise entreprise=  entrepriseRepoistory.findById(entrepriseId).orElse(null);	
+		if (entreprise == null)
+		{	throw new IllegalArgumentException(aff);	}
+		
+		return entrepriseRepoistory.findById(entrepriseId).orElse(null);
 	}
 
 }
