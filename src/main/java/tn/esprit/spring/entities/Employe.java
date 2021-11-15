@@ -140,6 +140,17 @@ public class Employe implements Serializable {
 		this.timesheets = timesheets;
 	}
 	
+	public Employe (EmployeDTO employedto)
+	{
+		this.nom = employedto.getNom();
+		this.prenom = employedto.getPrenom();
+		this.email = employedto.getEmail();
+		this.isActif = employedto.isActif();
+		this.role = employedto.getRole();
+		
+		
+	}
+	
 	
 	
 }
