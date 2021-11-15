@@ -82,6 +82,12 @@ public class Entreprise implements Serializable{
 		this.departements.add(departement);
 	}
 
+	public Entreprise(EntrepriseDTO e) {
+		this.name = e.getName();
+		this.raisonSocial = e.getRaisonSocial();
+		this.departements = e.getDepartements();
+	}
+
 
 
 

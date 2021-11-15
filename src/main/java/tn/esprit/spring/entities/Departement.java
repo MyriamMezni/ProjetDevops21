@@ -84,6 +84,16 @@ public class Departement implements Serializable {
 	public void setEntreprise(Entreprise entreprise) {
 		this.entreprise = entreprise;
 	}
+
+	public Departement(DepartementDTO d) {
+		
+		this.name = d.getName();
+		this.employes = d.getEmployes();
+		this.missions = d.getMissions();
+		this.entreprise = d.getEntreprise();
+	}
+
+
 	
 	
 
