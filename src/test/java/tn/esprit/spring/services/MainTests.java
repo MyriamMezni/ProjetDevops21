@@ -7,5 +7,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MainTests {
 	@Test
 	void contextLoads()
-	{}
+	{ /* TODO document why this method is empty */ }
 }

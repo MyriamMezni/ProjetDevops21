@@ -27,11 +27,15 @@ EmployeRepository ER;
 @Autowired
 ContratRepository CR;
  
+@Test
+void contextLoads()
+{ /* TODO document why this method is empty */ }
+
           
 @Test
 public void ajouterEmploye()
 {
-Employe emp=new Employe("testmyriam", "testmyriam", "testmyriam", true, Role.ADMINISTRATEUR);
+Employe emp=new Employe("testmyriam1", "testmyriam2", "testmyriam3", true, Role.ADMINISTRATEUR);
 int a=ES.ajouterEmploye(emp);
 assertEquals(emp.getId(), a);
 }
