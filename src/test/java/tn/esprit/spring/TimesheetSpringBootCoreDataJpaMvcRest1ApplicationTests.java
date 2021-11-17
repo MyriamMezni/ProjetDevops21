@@ -8,7 +8,7 @@ import tn.esprit.spring.services.EmployeServiceImplTest;
 
 
 @SpringBootTest
-public class TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTests {
+ class TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTests {
 	@Autowired
 	EmployeServiceImplTest ES;
 	@Test 
