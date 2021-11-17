@@ -14,7 +14,7 @@ public class TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTests {
   void contextLoads(){
 	  ES.ajouterContrat();
 	  ES.ajouterEmploye();
-	  
+	   
   }
 
 }
