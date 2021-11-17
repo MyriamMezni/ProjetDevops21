@@ -16,14 +16,14 @@ import org.junit.Test;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TimesheetTest {
+public class TimesheetServiceImplTest {
 
 	
 	@Autowired
 	ITimesheetService timerServ;
 	
 	@Test
-	public void ajouterMissionTest(){
+	public void ajouterMission(){
 		 Mission m = new Mission("mission name", "desc mission");
 		 int t = timerServ.ajouterMission(m);
 		 assertEquals(m.getId(), t);
@@ -35,7 +35,7 @@ public class TimesheetTest {
 	
 	
 	@Test
-	public void findAllMissionByEmployeJPQLtest(){
+	public void findAllMissionByEmployeJPQL(){
 		
 		Timesheet timesheet  = new Timesheet();
 		Employe emp = new Employe();
