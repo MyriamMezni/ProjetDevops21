@@ -39,9 +39,9 @@ assertEquals(emp.getId(), a);
 @Test
 public void ajouterContrat()
 {
-Contrat C=new Contrat(new Date(), "Contrat annuel myriam", 350);
-int a=ES.ajouterContrat(C);
-assertEquals(C.getReference(), a);
+Contrat con=new Contrat(new Date(), "Contrat annuel myriam", 350);
+int a=ES.ajouterContrat(con);
+assertEquals(con.getReference(), a);
 }
 
 
@@ -58,6 +58,7 @@ public void mettreAjourEmailByEmployeId()
 
 
 
+/*
 @Test
 public void affecterContratAEmploye()
 {
@@ -68,7 +69,7 @@ public void affecterContratAEmploye()
 	C.setEmploye(emp);
 	CR.save(C);
 	assertEquals("c'est bon", emp.getId(),employeId );
-}
+} */
 @Test
 public void getEmployePrenomById()
 {
@@ -77,7 +78,7 @@ String nom=ES.getEmployePrenomById(employeId);
 	assertEquals("c'est bon", ES.getEmployePrenomById(employeId),nom );
 }
 
-
+/*
 @Test
 public void deleteEmployeById()
 {
@@ -95,6 +96,7 @@ public void deleteContratById()
 	assertEquals("C'est bon",contratId ,21);
 
 }
+*/
 @Test
 public void getNombreEmployeJPQL()
 {
