@@ -27,9 +27,6 @@ EmployeRepository ER;
 @Autowired
 ContratRepository CR;
  
-@Test
-void contextLoads()
-{ /* TODO document why this method is empty */ }
 
           
 @Test
