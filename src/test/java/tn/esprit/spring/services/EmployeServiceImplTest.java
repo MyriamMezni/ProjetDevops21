@@ -31,7 +31,7 @@ ContratRepository CR;
 
           
 @Test
-public void ajouterEmployeTest()
+public void testajouterEmploye()
 {
 Employe emp=new Employe("testmyriam1", "testmyriam2", "testmyriam3", true, Role.ADMINISTRATEUR);
 int a=ES.ajouterEmploye(emp);

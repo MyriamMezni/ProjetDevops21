@@ -13,7 +13,7 @@ import tn.esprit.spring.services.EmployeServiceImplTest;
 	@Test 
 	void contextLoads()
 	{ 
-		ES.ajouterEmployeTest();
+		ES.testajouterEmploye();
 	
 	} 
 	
