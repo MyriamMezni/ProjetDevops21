@@ -13,6 +13,11 @@ public class TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTests {
 	EmployeServiceImplTest ES;
 	@Test 
 	void contextLoads()
-	{ ES.ajouterEmploye(); }
+	{ 
+		System.out.println("test");
+		ES.ajouterEmploye();
+		System.out.println("test2");
+	
+	}
 	
 }
