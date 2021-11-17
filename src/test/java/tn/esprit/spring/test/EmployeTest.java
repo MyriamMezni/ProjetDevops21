@@ -33,6 +33,7 @@ public void ajouterEmploye()
 {
 Employe emp=new Employe("testmyriam", "testmyriam", "testmyriam", true, Role.ADMINISTRATEUR);
 int a=ES.ajouterEmploye(emp);
+ER.save(emp);
 assertEquals(emp.getId(), a);
 }
 	
@@ -41,6 +42,7 @@ public void ajouterContrat()
 {
 Contrat C=new Contrat(new Date(), "Contrat annuel myriam", 350);
 int a=ES.ajouterContrat(C);
+CR.save(C);
 assertEquals(C.getReference(), a);
 }
 
