@@ -64,31 +64,10 @@ public class EntrepriseTest {
 		assertEquals("c'est bon", ES.getEntrepriseById(entrepriseId),nom );
 	}
 	
-	@Test
-	public void deleteEntrepriseById()
-	{
-		int entrepriseId=5;
-		ES.deleteEntrepriseById(entrepriseId);
-		assertEquals("c'est bon",entrepriseId,5 );
-		
-	}
+
 	
 	
-	@Test
-	public void deleteDepartementById()
-	{
-		int departementId=5;
-		ES.deleteDepartementById(departementId);
-		assertEquals("c'est bon",departementId,5 );
-		
-	}
+
 	
-	@Test
-	public void getEntrepriseById()
-	{
-		int entrepriseId=1;
-	Entreprise nom=ES.getEntrepriseById(entrepriseId);
-		assertEquals("c'est bon", ES.getEntrepriseById(entrepriseId),nom );
-	}
 
 }
