@@ -55,7 +55,7 @@ public class EntrepriseTest {
 		DR.save(C);
 		assertEquals("c'est bon", entr.getId(),entrepriseId );
 	}	
-	
+	 
 	@Test
 	public void getAllDepartementsNamesByEntreprise()
 	{ 
