@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import tn.esprit.spring.services.EmployeServiceImplTest;
 
-import org.junit.Test;
+import org.junit.*;
 
 @SpringBootTest
 public class TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTest {
