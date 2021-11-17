@@ -58,7 +58,7 @@ public class EntrepriseTest {
 	
 	@Test
 	public void getAllDepartementsNamesByEntreprise()
-	{
+	{ 
 		int entrepriseId=1;
 	List<String> nom=ES.getAllDepartementsNamesByEntreprise(entrepriseId);
 		assertEquals("c'est bon", ES.getEntrepriseById(entrepriseId),nom );
