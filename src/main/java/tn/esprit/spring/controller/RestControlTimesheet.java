@@ -41,7 +41,6 @@ EmployeRepository er;
 	
 	
 	// http://localhost:8081/SpringMVC/servlet/ajouterMission
-	//hethe ajout mission zidou acolade"id":4,"name":"mamission", "description":"c ma mission"
 	@PostMapping("/ajouterMission")
 	@ResponseBody
 	public int ajouterMission(@RequestBody MissionDTO missiondto) {

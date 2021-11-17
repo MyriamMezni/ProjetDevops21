@@ -59,19 +59,6 @@ public void mettreAjourEmailByEmployeId()
 }
 
 
-
-/*
-@Test
-public void affecterContratAEmploye()
-{
-	int contratId=20;
-	int employeId=1;
-	Contrat C=CR.findById(contratId).get();
-	Employe emp=ER.findById(employeId).get();
-	C.setEmploye(emp);
-	CR.save(C);
-	assertEquals("c'est bon", emp.getId(),employeId );
-} */
 @Test
 public void getEmployePrenomById()
 {
@@ -80,25 +67,7 @@ String nom=ES.getEmployePrenomById(employeId);
 	assertEquals("c'est bon", ES.getEmployePrenomById(employeId),nom );
 }
 
-/*
-@Test
-public void deleteEmployeById()
-{
-	int employeId=5;
-	ES.deleteEmployeById(employeId);
-	assertEquals("c'est bon",employeId,5 );
-	
-}
 
-@Test
-public void deleteContratById()
-{
-	int contratId=20;
-	ES.deleteContratById(contratId);
-	assertEquals("C'est bon",contratId ,21);
-
-}
-*/
 @Test
 public void getNombreEmployeJPQL()
 {
