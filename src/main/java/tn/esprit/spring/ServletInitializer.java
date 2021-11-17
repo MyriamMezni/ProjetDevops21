@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTest.class);
+		return application.sources(TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTests.class);
 	}
 
 }
