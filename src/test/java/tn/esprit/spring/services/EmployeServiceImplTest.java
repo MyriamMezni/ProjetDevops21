@@ -20,6 +20,7 @@ import tn.esprit.spring.services.IEmployeService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EmployeServiceImplTest {
+	
 @Autowired
 IEmployeService ES;
 @Autowired
@@ -30,7 +31,7 @@ ContratRepository CR;
 
           
 @Test
-public void ajouterEmploye()
+public void ajouterEmployeTest()
 {
 Employe emp=new Employe("testmyriam1", "testmyriam2", "testmyriam3", true, Role.ADMINISTRATEUR);
 int a=ES.ajouterEmploye(emp);
