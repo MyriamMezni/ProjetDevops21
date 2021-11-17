@@ -7,7 +7,7 @@ import tn.esprit.spring.test.EmployeTest;
 import org.junit.Test;
 
 @SpringBootTest
-public class TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTests {
+class TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTests {
 
 	EmployeTest ES;
 	@Test
