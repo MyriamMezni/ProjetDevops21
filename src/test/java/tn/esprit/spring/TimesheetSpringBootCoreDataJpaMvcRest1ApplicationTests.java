@@ -9,7 +9,6 @@ import tn.esprit.spring.services.EmployeServiceImplTest;
 
 @SpringBootTest
  class TimesheetSpringBootCoreDataJpaMvcRest1ApplicationTests {
-	@Autowired
 	EmployeServiceImplTest ES;
 	@Test 
 	void contextLoads()
