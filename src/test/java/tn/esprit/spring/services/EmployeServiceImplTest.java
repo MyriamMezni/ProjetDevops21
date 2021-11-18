@@ -123,5 +123,5 @@ public void deleteAllContratJPQL()
 	catch (Exception e) { logger.error("Erreur dans deleteAllContratJPQLsq() : " , e); }
 
 }
-
+ 
 }
