@@ -62,7 +62,7 @@ logger.info("out ajouter Contrat ");
 }
 catch (Exception e) { logger.error("Erreur dans ajouterContrat() : " , e); }
 
-}
+} 
 
 
 @Test
