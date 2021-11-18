@@ -52,9 +52,16 @@ public void testajouterEmploye()
 @Test
 public void ajouterContrat()
 {
+	try {
+		logger.info("in ajouter Contrat");
+		logger.debug("Je vais commencer l'ajout");
 Contrat con=new Contrat(new Date(), "Contrat annuel myriam", 350);
 int a=ES.ajouterContrat(con);
 assertEquals(con.getReference(), a);
+logger.info("out ajouter Contrat ");
+}
+catch (Exception e) { logger.error("Erreur dans ajouterContrat() : " , e); }
+
 }
 
 
@@ -73,16 +80,31 @@ public void mettreAjourEmailByEmployeId()
 @Test
 public void getEmployePrenomById()
 {
-	int employeId=1;
-String nom=ES.getEmployePrenomById(employeId);
-	assertEquals("c'est bon", ES.getEmployePrenomById(employeId),nom );
+	try {
+			logger.info("in  getEmployePrenomById");
+			logger.debug(cst);
+		
+			int employeId=1;
+			String nom=ES.getEmployePrenomById(employeId);
+			assertEquals("c'est bon", ES.getEmployePrenomById(employeId),nom );
+			logger.info("out de getEmployePrenomById ");
+		}
+			catch (Exception e) { logger.error("Erreur dans getEmployePrenomById() : " , e); }
+	
 }
 
 
 @Test
 public void getNombreEmployeJPQL()
 {
-	assertEquals(ES.getNombreEmployeJPQL(),ES.getAllEmployes().size());
+
+	try {
+		logger.info("in  getNombreEmployeJPQL");
+		logger.debug(cst);
+		assertEquals(ES.getNombreEmployeJPQL(),ES.getAllEmployes().size());
+		logger.info("out de getNombreEmployeJPQL ");
+	}
+	catch (Exception e) { logger.error("Erreur dans getNombreEmployeJPQL() : " , e); }
 
 }
 
@@ -90,8 +112,15 @@ public void getNombreEmployeJPQL()
 @Test
 public void deleteAllContratJPQL()
 {
-	ES.deleteAllContratJPQL();
-	assertEquals(0,CR.count());
+	
+	try {
+		logger.info("in  deleteAllContratJPQL");
+		logger.debug("Je vais commencer la suppression");
+		ES.deleteAllContratJPQL();
+		assertEquals(0,CR.count());
+		logger.info("out deleteAllContratJPQL ");
+	}
+	catch (Exception e) { logger.error("Erreur dans deleteAllContratJPQLsq() : " , e); }
 
 }
 
