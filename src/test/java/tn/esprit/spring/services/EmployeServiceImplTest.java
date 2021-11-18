@@ -37,6 +37,7 @@ String cst="je vais commencer la recherche";
 public void testajouterEmploye()
 {
 	try {
+		logger.trace("debut du log");
 		logger.info("in ajouter Employe");
 		logger.debug("Je vais commencer l'ajout");
 		Employe emp=new Employe("testmyriam1", "testmyriam2", "testmyriam3", true, Role.ADMINISTRATEUR);
