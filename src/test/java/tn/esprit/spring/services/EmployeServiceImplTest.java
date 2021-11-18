@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ import tn.esprit.spring.services.IEmployeService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EmployeServiceImplTest {
-	
+	Logger logger=LogManager.getLogger();
 @Autowired
 IEmployeService ES;
 @Autowired
@@ -28,14 +30,22 @@ EmployeRepository ER;
 @Autowired
 ContratRepository CR;
  
+String cst="je vais commencer la recherche";
 
           
 @Test
 public void testajouterEmploye()
 {
-Employe emp=new Employe("testmyriam1", "testmyriam2", "testmyriam3", true, Role.ADMINISTRATEUR);
-int a=ES.ajouterEmploye(emp);
-assertEquals(emp.getId(), a);
+	try {
+		logger.info("in ajouter Employe");
+		logger.debug("Je vais commencer l'ajout");
+		Employe emp=new Employe("testmyriam1", "testmyriam2", "testmyriam3", true, Role.ADMINISTRATEUR);
+		int a=ES.ajouterEmploye(emp);
+		assertEquals(emp.getId(), a);
+		logger.info("out ajouter Employe");
+	}
+	catch (Exception e) { logger.error("Erreur dans ajouterEmploye() : " , e); }
+
 }
 	
 @Test
